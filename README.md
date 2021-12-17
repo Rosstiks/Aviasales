@@ -1,6 +1,6 @@
 <h1>Aviasales ticket (test API)</h1>
 
-<h2><a href='https://rosstiks.github.io/movies-library-app/'>Ссылка</a> на Pages</h2>
+<h2><a href='https://rosstiks.github.io/Aviasales/'>Ссылка</a> на Pages</h2>
 <h2><a href='https://aviasales-delta-smoky.vercel.app/'>Ссылка</a> на Vercel</h2>
 
 <h2>Для сборки:</h2>
