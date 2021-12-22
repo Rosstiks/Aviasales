@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/Aviasales/static/css/main.88c02435.chunk.css",
-    "main.js": "/Aviasales/static/js/main.d918b0fe.chunk.js",
-    "main.js.map": "/Aviasales/static/js/main.d918b0fe.chunk.js.map",
+    "main.css": "/Aviasales/static/css/main.64fc2fcc.chunk.css",
+    "main.js": "/Aviasales/static/js/main.fe499dea.chunk.js",
+    "main.js.map": "/Aviasales/static/js/main.fe499dea.chunk.js.map",
     "runtime-main.js": "/Aviasales/static/js/runtime-main.7b5d9bf5.js",
     "runtime-main.js.map": "/Aviasales/static/js/runtime-main.7b5d9bf5.js.map",
     "static/css/2.0ce74623.chunk.css": "/Aviasales/static/css/2.0ce74623.chunk.css",
-    "static/js/2.fdac6477.chunk.js": "/Aviasales/static/js/2.fdac6477.chunk.js",
-    "static/js/2.fdac6477.chunk.js.map": "/Aviasales/static/js/2.fdac6477.chunk.js.map",
+    "static/js/2.03de7fb5.chunk.js": "/Aviasales/static/js/2.03de7fb5.chunk.js",
+    "static/js/2.03de7fb5.chunk.js.map": "/Aviasales/static/js/2.03de7fb5.chunk.js.map",
     "index.html": "/Aviasales/index.html",
     "static/css/2.0ce74623.chunk.css.map": "/Aviasales/static/css/2.0ce74623.chunk.css.map",
-    "static/css/main.88c02435.chunk.css.map": "/Aviasales/static/css/main.88c02435.chunk.css.map",
-    "static/js/2.fdac6477.chunk.js.LICENSE.txt": "/Aviasales/static/js/2.fdac6477.chunk.js.LICENSE.txt",
+    "static/css/main.64fc2fcc.chunk.css.map": "/Aviasales/static/css/main.64fc2fcc.chunk.css.map",
+    "static/js/2.03de7fb5.chunk.js.LICENSE.txt": "/Aviasales/static/js/2.03de7fb5.chunk.js.LICENSE.txt",
     "static/media/Logo.ba7ff9c5.svg": "/Aviasales/static/media/Logo.ba7ff9c5.svg",
     "static/media/filter-item.module.css": "/Aviasales/static/media/checkboxOn.0fa36354.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.7b5d9bf5.js",
     "static/css/2.0ce74623.chunk.css",
-    "static/js/2.fdac6477.chunk.js",
-    "static/css/main.88c02435.chunk.css",
-    "static/js/main.d918b0fe.chunk.js"
+    "static/js/2.03de7fb5.chunk.js",
+    "static/css/main.64fc2fcc.chunk.css",
+    "static/js/main.fe499dea.chunk.js"
   ]
 }
