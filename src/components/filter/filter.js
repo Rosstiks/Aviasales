@@ -7,11 +7,11 @@ export default function Filter() {
     <div className={classes.filterContainer}>
       <span className={classes.filterTitle}>Количество пересадок</span>
       <ul className={classes.filterList}>
-        <FilterItem title="Все" />
-        <FilterItem title="Без пересадок" />
-        <FilterItem title="1 пересадка" />
-        <FilterItem title="2 пересадки" />
-        <FilterItem title="3 пересадки" />
+        <FilterItem name="ALL" />
+        <FilterItem name="0_TRANS" />
+        <FilterItem name="1_TRANS" />
+        <FilterItem name="2_TRANS" />
+        <FilterItem name="3_TRANS" />
       </ul>
     </div>
   );

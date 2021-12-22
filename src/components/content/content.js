@@ -1,11 +1,11 @@
 import React from 'react';
-import ResultsFilter from '../results-filter';
+import ResultsSort from '../results-sort';
 import ResultsList from '../results-list';
 
 export default function Content() {
   return (
     <section>
-      <ResultsFilter />
+      <ResultsSort />
       <ResultsList />
     </section>
   );
