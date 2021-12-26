@@ -3,9 +3,9 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes, { bool } from 'prop-types';
 import classes from './filter-item.module.css';
-import { changeFilter } from '../../actions';
+import { changeFilter, changeFilterAll } from '../../actions';
 
-function FilterItem({ name, filter, changeFilter }) {
+function FilterItem({ name, filter, changeFilter, changeFilterAll }) {
   const titleCheckbox = {
     ALL: 'Все',
     '0_TRANS': 'Без пересадок',
@@ -14,7 +14,8 @@ function FilterItem({ name, filter, changeFilter }) {
     '3_TRANS': '3 пересадки',
   };
   const toggleCheck = () => {
-    changeFilter(name);
+    // eslint-disable-next-line no-unused-expressions
+    name === 'ALL' ? changeFilterAll() : changeFilter(name);
   };
 
   return (
@@ -39,6 +40,7 @@ function FilterItem({ name, filter, changeFilter }) {
 FilterItem.propTypes = {
   name: PropTypes.string.isRequired,
   changeFilter: PropTypes.func.isRequired,
+  changeFilterAll: PropTypes.func.isRequired,
   filter: PropTypes.objectOf(bool).isRequired,
 };
 
@@ -46,6 +48,6 @@ const mapStateToProps = (state) => ({
   filter: state.filter,
 });
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({ changeFilter }, dispatch);
+const mapDispatchToProps = (dispatch) => bindActionCreators({ changeFilterAll, changeFilter }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(FilterItem);

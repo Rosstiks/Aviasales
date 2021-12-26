@@ -1,13 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import reducer from './reducers/reducer';
+import reduxThunk from 'redux-thunk';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import reducer from './reducer';
 import App from './components/app';
 import 'antd/dist/antd.css';
 import './index.css';
+import { fetchTickets } from './actions';
 
-const store = createStore(reducer);
+const store = createStore(reducer, composeWithDevTools(applyMiddleware(reduxThunk)));
 
 ReactDOM.render(
   <Provider store={store}>
@@ -15,3 +18,5 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
+
+store.dispatch(fetchTickets());

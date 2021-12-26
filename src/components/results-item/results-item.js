@@ -1,43 +1,27 @@
 import React from 'react';
-import testLogo from '../../img/S7 Logo(TEST).png';
+import PropTypes from 'prop-types';
 import classes from './results-item.module.css';
+import ItemBody from '../item-body/item-body';
 
-export default function ResultsItem() {
+export default function ResultsItem({ price, carrier, segments }) {
+  const carrierLogoURL = `https://pics.avs.io/99/36/${carrier}.png`;
+
   return (
     // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
     <li className={classes.container} tabIndex="0">
       <header className={classes.header}>
-        <span className={classes.price}>13 400 P</span>
-        <img src={testLogo} alt="aircraft logo" />
+        <span className={classes.price}>{price} P</span>
+        <img src={carrierLogoURL} alt="aircraft logo" />
       </header>
-      <div className={classes.descriptionRow}>
-        <div className={classes.descriptionColumn}>
-          <span className={classes.titleInfo}>MOW – HKT</span>
-          <span className={classes.info}>10:45 – 08:00</span>
-        </div>
-        <div className={classes.descriptionColumn}>
-          <span className={classes.titleInfo}>В пути</span>
-          <span className={classes.info}>21ч 15м</span>
-        </div>
-        <div className={classes.descriptionColumn}>
-          <span className={classes.titleInfo}>2 пересадки</span>
-          <span className={classes.info}>HKG, JNB</span>
-        </div>
-      </div>
-      <div className={classes.descriptionRow}>
-        <div className={classes.descriptionColumn}>
-          <span className={classes.titleInfo}>MOW – HKT</span>
-          <span className={classes.info}>11:20 – 00:50</span>
-        </div>
-        <div className={classes.descriptionColumn}>
-          <span className={classes.titleInfo}>В пути</span>
-          <span className={classes.info}>13ч 30м</span>
-        </div>
-        <div className={classes.descriptionColumn}>
-          <span className={classes.titleInfo}>2 пересадки</span>
-          <span className={classes.info}>HKG</span>
-        </div>
-      </div>
+      <ItemBody {...segments[0]} />
+      <ItemBody {...segments[1]} />
     </li>
   );
 }
+
+ResultsItem.propTypes = {
+  price: PropTypes.number.isRequired,
+  carrier: PropTypes.string.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  segments: PropTypes.array.isRequired,
+};

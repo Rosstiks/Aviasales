@@ -1,18 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Row, Col } from 'antd';
-import ApiService from '../../services/api-service';
 import Filter from '../filter';
-import Content from '../content';
 import LogoImage from '../../img/Logo.svg';
 import classes from './app.module.css';
+import ResultsSort from '../results-sort';
+import ResultsList from '../results-list';
 
 export default function App() {
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const apiService = new ApiService();
-  useEffect(() => {
-    apiService.getSearchId().then((id) => apiService.getTicketsPack(id));
-  }, [apiService]);
-
   return (
     <div className={classes.container}>
       <div className={classes.logoContainer}>
@@ -23,7 +17,8 @@ export default function App() {
           <Filter />
         </Col>
         <Col xs={{ span: 24 }} md={{ span: 16 }}>
-          <Content />
+          <ResultsSort />
+          <ResultsList />
         </Col>
       </Row>
     </div>
