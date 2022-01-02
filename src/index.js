@@ -8,7 +8,6 @@ import reducer from './reducer';
 import App from './components/app';
 import 'antd/dist/antd.css';
 import './index.css';
-import { fetchTickets } from './actions';
 
 const store = createStore(reducer, composeWithDevTools(applyMiddleware(reduxThunk)));
 
@@ -18,5 +17,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
-
-store.dispatch(fetchTickets());

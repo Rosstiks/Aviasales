@@ -1,55 +1,79 @@
 import { combineReducers } from 'redux';
 
-const initialFilter = {
-  ALL: false,
-  '0_TRANS': false,
-  '1_TRANS': false,
-  '2_TRANS': false,
-  '3_TRANS': false,
-};
-
 // eslint-disable-next-line default-param-last
-function filter(filter = initialFilter, action) {
-  let newFilter = { ...filter };
+function filter(
+  state = {
+    ALL: true,
+    '0_TRANS': true,
+    '1_TRANS': true,
+    '2_TRANS': true,
+    '3_TRANS': true,
+  },
+  action
+) {
+  let newFilter = { ...state };
   let checkAllFilters;
 
   switch (action.type) {
     case 'CHANGE_FILTER':
-      newFilter = { ...filter, [action.change]: !filter[action.change] };
+      newFilter = { ...state, [action.change]: !state[action.change] };
       checkAllFilters = Object.values(newFilter).slice(1).includes(false);
       return { ...newFilter, ALL: !checkAllFilters };
 
     case 'CHANGE_FILTER_ALL':
       // eslint-disable-next-line guard-for-in
       for (const key in newFilter) {
-        newFilter[key] = !filter.ALL;
+        newFilter[key] = !state.ALL;
       }
       return newFilter;
 
     default:
-      return filter;
+      return state;
   }
 }
 
-// eslint-disable-next-line default-param-last
-function sort(sort = 'CHEAP', action) {
+function sort(state = 'CHEAP', action) {
   switch (action.type) {
     case 'CHANGE_SORT':
       return action.change;
 
     default:
-      return sort;
+      return state;
   }
 }
 
-// eslint-disable-next-line default-param-last
-function tickets(tickets = [], action) {
+function tickets(
+  state = {
+    isLoading: false,
+    loadComplete: false,
+    items: [],
+  },
+  action
+) {
   switch (action.type) {
     case 'RECEIVE_TICKETS':
-      return [...tickets, ...action.tickets];
+      return {
+        ...state,
+        items: [...state.items, ...action.data.tickets],
+        loadComplete: action.data.stop,
+        isLoading: false,
+      };
+
+    case 'REQUEST_TICKETS':
+      return { ...state, isLoading: true };
 
     default:
-      return tickets;
+      return state;
+  }
+}
+
+function searchID(state = '', action) {
+  switch (action.type) {
+    case 'SET_SEARCH_ID':
+      return action.id;
+
+    default:
+      return state;
   }
 }
 
@@ -57,6 +81,7 @@ const reducer = combineReducers({
   filter,
   sort,
   tickets,
+  searchID,
 });
 
 export default reducer;

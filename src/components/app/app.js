@@ -1,14 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import { Row, Col } from 'antd';
+import PropTypes from 'prop-types';
+import { getSearchID, getTickets } from '../../actions';
 import Filter from '../filter';
-import LogoImage from '../../img/Logo.svg';
-import classes from './app.module.css';
+import Alert from '../alert';
 import ResultsSort from '../results-sort';
 import ResultsList from '../results-list';
+import LogoImage from '../../img/Logo.svg';
+import classes from './app.module.css';
 
-export default function App() {
+function App({ searchID, isLoading, loadComplete, getSearchID, getTickets }) {
+  useEffect(getSearchID, [getSearchID]);
+
+  if (searchID && !isLoading && !loadComplete) {
+    getTickets(searchID);
+  }
+
   return (
     <div className={classes.container}>
+      <Alert />
       <div className={classes.logoContainer}>
         <img src={LogoImage} alt="logo" className={classes.logo} />
       </div>
@@ -24,3 +36,21 @@ export default function App() {
     </div>
   );
 }
+
+App.propTypes = {
+  searchID: PropTypes.string.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  loadComplete: PropTypes.bool.isRequired,
+  getSearchID: PropTypes.func.isRequired,
+  getTickets: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (store) => ({
+  searchID: store.searchID,
+  isLoading: store.tickets.isLoading,
+  loadComplete: store.tickets.loadComplete,
+});
+
+const mapDispatchToProps = (dispatch) => bindActionCreators({ getSearchID, getTickets }, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

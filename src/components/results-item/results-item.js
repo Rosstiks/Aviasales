@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classes from './results-item.module.css';
-import ItemBody from '../item-body/item-body';
+import ItemBody from '../item-body';
 
 export default function ResultsItem({ price, carrier, segments }) {
   const carrierLogoURL = `https://pics.avs.io/99/36/${carrier}.png`;

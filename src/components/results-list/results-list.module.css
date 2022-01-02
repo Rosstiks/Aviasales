@@ -4,6 +4,17 @@
   list-style: none;
 }
 
+.alertContainer {
+  padding-top: 10px;
+}
+
+.spinnerContainer {
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .buttonMore {
   line-height: 1.65em;
   font-weight: 600;
