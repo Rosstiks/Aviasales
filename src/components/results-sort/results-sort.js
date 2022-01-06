@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import classes from './results-sort.module.css';
-import { changeSort } from '../../actions';
+import { changeSort } from '../../store/actions';
 
 function ResultsSort({ sort, changeSort }) {
   return (

@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Row, Col } from 'antd';
 import PropTypes from 'prop-types';
-import { getSearchID, getTickets } from '../../actions';
+import { getSearchID, getTickets } from '../../store/actions';
 import Filter from '../filter';
 import Alert from '../alert';
 import ResultsSort from '../results-sort';

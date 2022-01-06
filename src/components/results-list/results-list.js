@@ -10,14 +10,10 @@ function ResultsList({ tickets, filter, sort }) {
   const [displayTickets, setDisplayTickets] = useState(5);
 
   const filteredList = tickets.filter((ticket) => {
+    if (filter.ALL) return true;
     const stopsThere = ticket.segments[0].stops.length;
     const stopsBack = ticket.segments[1].stops.length;
-    if (filter.ALL) return true;
-    if (filter['0_TRANS'] && (stopsThere === 0 || stopsBack === 0)) return true;
-    if (filter['1_TRANS'] && (stopsThere === 1 || stopsBack === 1)) return true;
-    if (filter['2_TRANS'] && (stopsThere === 2 || stopsBack === 2)) return true;
-    if (filter['3_TRANS'] && (stopsThere === 3 || stopsBack === 3)) return true;
-    return false;
+    return Object.keys(filter).some((el) => filter[el] && (stopsThere === +el[0] || stopsBack === +el[0]));
   });
 
   filteredList.sort((prev, next) => {

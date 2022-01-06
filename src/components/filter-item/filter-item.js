@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes, { bool } from 'prop-types';
 import classes from './filter-item.module.css';
-import { changeFilter, changeFilterAll } from '../../actions';
+import { changeFilter, changeFilterAll } from '../../store/actions';
 
 function FilterItem({ name, filter, changeFilter, changeFilterAll }) {
   const titleCheckbox = {
