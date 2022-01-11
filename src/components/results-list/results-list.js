@@ -16,15 +16,13 @@ function ResultsList({ tickets, filter, sort }) {
     return Object.keys(filter).some((el) => filter[el] && (stopsThere === +el[0] || stopsBack === +el[0]));
   });
 
-  filteredList.sort((prev, next) => {
-    const timePrev = prev.segments[0].duration + prev.segments[1].duration;
-    const timeNext = next.segments[0].duration + next.segments[1].duration;
-    const stopsPrev = prev.segments[0].stops.length + prev.segments[1].stops.length;
-    const stopsNext = next.segments[0].stops.length + next.segments[1].stops.length;
-    if (sort === 'FAST') return timePrev - timeNext;
-    if (sort === 'OPTIMAL') return stopsPrev - stopsNext;
-    return prev.price - next.price;
-  });
+  const sortValue = {
+    FAST: (prev, next) => prev.segments.reduce((acc, el) => el.duration + acc, 0) - next.segments.reduce((acc, el) => el.duration + acc, 0),
+    OPTIMAL: (prev, next) => prev.segments.reduce((acc, el) => el.stops.length + acc, 0) - next.segments.reduce((acc, el) => el.stops.length + acc, 0),
+    CHEAP: (prev, next) => prev.price - next.price
+  }
+
+  filteredList.sort(sortValue[sort]);
 
   const ticketsList = filteredList
     .slice(0, displayTickets)
